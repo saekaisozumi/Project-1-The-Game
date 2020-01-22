@@ -9,49 +9,89 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="header">
-        <h1 class="title">Where is this in the world?</h1>
-        <div class="timerstar">
-          <div id="timer"></div>
-          <div class="stars">
-            <div class="star1">✈︎</div>
-            <div class="star2">✈︎</div>
-            <div class="star3">✈︎</div>
-            <div class="star4">✈︎</div>
+    <!-- introduction page -->
+    <div id="start-page">
+      <h1>Where is this in the world?</h1>
+      <img class="startimg" src="pictures/Berlin,Germany.jpg" alt="" />
+
+      <h3>INTRODUCTION</h3>
+      <h5>✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎</h5>
+      <ol>
+        <li>1. You have 10 questions.</li>
+        <li>2. For each question, you have 20 sec</li>
+        <li>3. Click "SUBMIT" after you chose an answer</li>
+        <li></li>
+        <li><span>ENJOY YOUR TRIP!!</span></li>
+      </ol>
+      <h5>✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎</h5>
+      <input type="button" value="START" onclick="showQuizPage()" />
+      <!-- <button id="startgame">START</button> -->
+    </div>
+    <!-- main page -->
+    <div id="quiz-page">
+      <!-- header -->
+      <div class="container">
+        <div class="header">
+          <h1 class="title">Where is this in the world?</h1>
+          <div class="timerstar">
+            <div id="timer"></div>
+            <div class="stars">
+              <div class="star1">✈︎</div>
+              <div class="star2">✈︎</div>
+              <div class="star3">✈︎</div>
+              <div class="star4">✈︎</div>
+            </div>
           </div>
         </div>
       </div>
+      <!-- header END -->
+      <!-- question part starts -->
+      <img src="pictures/Berlin,Germany.jpg" alt="" id="quiz-image" />
+      <div class="question" id="quiz-title">Where is this?</div>
 
-      <div class="image">
-        <img class="img" src="" alt="" />
+      <div id="quiz-answer">
+        <input type="radio" name="answers" value="berlin" />
+        <div id="first-answer">
+          Berlin
+        </div>
+        <input type="radio" name="answers" value="london" />
+        <div id="second-answer">
+          London
+        </div>
+        <input type="radio" name="answers" value="paris" />
+        <div id="third-answer">
+          Paris
+        </div>
+        <div id="answer"></div>
       </div>
-    </div>
 
-    <div class="quiz-container">
-      <div id="quiz"></div>
-      <!-- ここにクイズを格納 -->
-    </div>
-
-    <button id="previous">Previous Question</button>
-    <button id="next">Next Question</button>
-    <button id="submit">Submit Quiz</button
-    ><!-- ｸｲｽﾞを送信 -->
-    <div id="results"></div>
-    <!-- ここに結果を表示 -->
-
-    <!--  <div id="submit-form">
-       <input type="text" placeholder="write a city name..." />
-      <button id="submit-city1">1</button>
-      <button id="submit-city2">2</button>
-      <button id="submit-city3">3</button>
-      <button id="submit-city4">4</button>
-    </div>
-
-    <div id="next-button">
-      <button id="go-back">BACK</button>
-      <button id="go-next">NEXT</button>
+      <!-- <div>
+      <input type="radio" name="answers" value="berlin" />
+      <label for="berlin">Berlin</label>
+      <input type="radio" name="answers" value="london" />
+      <label for="london">Paris</label>
+      <input type="radio" name="answers" value="paris" />
+      <label for="paris">London</label>
     </div> -->
+
+      <button id="previous">Previous</button>
+      <button id="submit">Submit</button>
+      <button id="next">GO Next</button>
+
+      <button id="goback" class="goback">back to start</button>
+      <button id="result">result</button>
+    </div>
+
+    <!-- show result -->
+    <div id="result-page">
+      <h3>RESULT</h3>
+      <h5>✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎</h5>
+      <div class="resultContainer">10/10</div>
+      <button id="goback2" class="goback">back to start</button>
+      <h5>✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎</h5>
+    </div>
+    <!-- question part ends -->
+
     <script src="script.js"></script>
   </body>
 </html>

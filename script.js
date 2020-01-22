@@ -1,143 +1,195 @@
-var count = 20;
-var countdown = function() {
-  document.getElementById("timer").textContent = count.toString();
-  console.log(count--);
-  var id = setTimeout(countdown, 1000);
-  if (count < 0) {
-    clearTimeout(id);
-  }
-};
-countdown();
+let currentSlide = 0;
 
-const quizContainer = document.getElementById("quiz");
-const resultContainer = document.getElementById("result");
-const submitButton = document.getElementById("submit");
-
-/* クイズを作成する関数 */
-function buildQuiz() {
-  const quizOutPut = [];
-  //HTML出力を格納する変数Quizoutputを用意。この変数に質問と解答の選択肢を入力します
-  //それぞれの質問のHTMLを生成するために、forEachループで順番に質問を処理します。
-  myQuestions.forEach(function(currentQuestion, questionNum) {
-    //現在の値とインデックスが必要で、それぞれcurrentQuestionとquestionNumと名付けています
-    // here goes the code we want to run for each question
-    const answers = [];
-    for (words in currentQuestion.answers) {
-      answers.push(
-        `<label>
-        <input type="radio" name="question${questionNum}" value="${words}">
-        ${words}:
-        ${currentQuestion.answers[words]}
-        </label>`
-      );
-    }
-    quizOutput.push(
-      `<div class = "question">${currentQuestion.question}</div>
-      <div class = "answers">${answers.join("")}</div>`
-    );
-  });
-
-  quizContainer.innerHTML = quizOutput.join("");
-}
-
-/* 結果を表示する関数 */
-function showResult() {
-  const answerContainers = quizContainer.querySelectorAll(".answers");
-  let correctNum = 0;
-  myQuestions.forEach(function(currentQuestion, questionNum) {
-    const answerContainer = answerContainers[questionNum];
-    const selector = "input[name=question" + questionNum + "]:checked";
-    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-    if (userAnswer === currentQuestion.correctAnswer) {
-      correctNum++;
-    }
-  });
-  resultContainer.innerHTML = correctNum + "out of" + myQuestions.length;
-}
-
-/* クイズをすぐに表示する */
-buildQuiz();
-
-/* submitボタンを押した後、結果を表示する */
-submitButton.addEventListener("click", showResult);
-
-let myQuestions = [
+const myQuestions = [
   {
-    question: "Where is this?",
+    question: "Where is this(city)?",
     picture: "pictures/Berlin,Germany.jpg",
     answers: {
-      1: "Berlin",
-      2: "Paris",
-      3: "London"
+      a: "Berlin",
+      b: "Paris",
+      c: "London"
     },
-    correctAnswer: 1
+    correctAnswer: "Berlin"
   },
 
   {
-    question: "Where is this?",
+    question: "Where is this(city)?",
     picture: "pictures/Paris,France.jpeg",
     answers: {
-      1: "Berlin",
-      2: "Paris",
-      3: "London"
+      a: "Berlin",
+      b: "Paris",
+      c: "London"
     },
-    correctAnswer: 2
+    correctAnswer: "b: Paris"
   },
 
   {
-    question: "Where is this?",
+    question: "Where is this(city)?",
     picture: "pictures/Köln, Germany.jpg",
     answers: {
-      1: "Köln",
-      2: "Paris",
-      3: "Humburg"
+      a: "Köln",
+      b: "Paris",
+      c: "Humburg"
     },
-    correctAnswer: 1
+    correctAnswer: "a: Köln"
   }
 ];
 
-/* var counts = 20;
-var countdown1 = function() {
-  let theStarDiv = document.getElementByClass("star1");
+//countdown timer
+var countdown = function() {
+  var count = 20;
 
-  if (counts > 15) {
-    console.log(theStarDiv);
-    theStarDiv.innerText = "✈️✈︎✈︎✈︎";
-  } else if (counts > 11) {
-    console.log(theStarDiv);
-    theStarDiv.innerText = "✈️✈︎✈︎";
-  } else if (counts > 6) {
-    console.log(theStarDiv);
-    theStarDiv.innerText = "✈️✈︎";
-  } else if (counts > 0) {
-    console.log(theStarDiv);
-    theStarDiv.innerText = "✈️";
-  }
-  var id = setTimeout(countdown, 1000);
-  if (counts < 0) {
-    clearTimeout(id);
-  }
+  document.getElementById("timer").textContent = count.toString();
+  // console.log(count--);
+  var id = setInterval(function() {
+    document.getElementById("timer").textContent = count.toString();
+    let blurVal = count / 2;
+    // console.log(blurVal);
+    document.querySelector("#quiz-image").style.filter = `blur(${blurVal}px)`;
+    // countdown();
+    // console.log(count);
+    if (count <= 0) {
+      clearInterval(id); //idをclearIntervalで指定しているd
+    }
+    count--;
+  }, 1000);
 };
-countdown1(); */
 
-/* let counts = 20;
-let theStar;
-const intervalId = setInterval(function() {
-  if (counts > 15) {
-    theStar = document.getElementsByClassName("Stars");
-    document.removeClass("star1");
+// countdown();
+
+//blur picture function -> haven't fixed yet
+function imageBlur() {
+  const blurNum = 40;
+  for (var i = 0; i <= 20; i++) {}
+}
+
+//Go to quiz page from start page
+document.getElementById("quiz-page").style.display = "none";
+document.getElementById("start-page").style.display = "block";
+document.getElementById("result-page").style.display = "none";
+
+function showQuizPage() {
+  const quizPage = document.getElementById("quiz-page");
+  const startPage = document.getElementById("start-page");
+  const resultPage = document.getElementById("result-page");
+  if (quizPage.style.display == "block") {
+    quizPage.style.display = "none";
+    resultPage.style.display = "none";
   } else {
-    console.log("hosi");
-    clearInterval(intervalId);
+    quizPage.style.display = "block";
+    startPage.style.display = "none";
   }
-  counts--;
-}, 1000); */
+}
 
-/* var starRemove = function() {
-  let theStar = document.getElementsByClassName(".stars");
-  if (countdown < 15) {
-    parent.removeChild(theStar);
+//Go to result page from quiz page
+function showResultPage() {
+  const quizPage = document.getElementById("quiz-page");
+  const startPage = document.getElementById("start-page");
+  const resultPage = document.getElementById("result-page");
+
+  quizPage.style.display = "none";
+  startPage.style.display = "none";
+  resultPage.style.display = "block";
+}
+
+//go back to start page
+function goBackToStart() {
+  const quizPage = document.getElementById("quiz-page");
+  const startPage = document.getElementById("start-page");
+  const resultPage = document.getElementById("result-page");
+
+  quizPage.style.display = "none";
+  startPage.style.display = "block";
+  resultPage.style.display = "none";
+}
+
+//go back to start page
+function goBackToStart() {
+  console.log("HELOOOOOOO");
+  const quizPage = document.getElementById("quiz-page");
+  const startPage = document.getElementById("start-page");
+  const resultPage = document.getElementById("result-page");
+
+  quizPage.style.display = "none";
+  startPage.style.display = "block";
+  resultPage.style.display = "none";
+}
+
+//switch questions function
+function showSlide(curSlide) {
+  //console.log(`Hello`);
+  let quizImage = document.getElementById("quiz-image");
+  let questionTitle = document.getElementById("quiz-title");
+  let quizAnswer = document.getElementById("quiz-answer");
+  let firstAnswer = document.getElementById("first-answer");
+  let secondAnswer = document.getElementById("second-answer");
+  let thirdAnswer = document.getElementById("third-answer");
+
+  quizImage.src = curSlide.picture;
+  questionTitle.innerHTML = curSlide.question;
+  //quizAnswer.innerHTML = curSlide.answers;
+  firstAnswer.innerHTML = curSlide.answers.a;
+  secondAnswer.innerHTML = curSlide.answers.b;
+  thirdAnswer.innerHTML = curSlide.answers.c;
+}
+
+//go to next question function
+function showNextSlide() {
+  const showAns = document.getElementById("answer");
+  showAns.innerHTML = "";
+  if (currentSlide + 1 < myQuestions.length) {
+    currentSlide += 1;
+    //console.log(currentSlide, myQuestions.length);
+    showSlide(myQuestions[currentSlide]);
+  } else {
+    return;
   }
-};
- */
+}
+
+//go back to previous question
+function showPreviousSlide() {
+  const showAns = document.getElementById("answer");
+  showAns.innerHTML = "";
+  if (currentSlide > 0) {
+    currentSlide -= 1;
+    showSlide(myQuestions[currentSlide]);
+  } else {
+    return;
+  }
+}
+
+//show answer after push submit button 木曜日！！！！！！！！！！！！
+const submitButton = document.getElementById("submit");
+submitButton.addEventListener("click", showAnswer);
+
+function showAnswer() {
+  const showAns = document.getElementById("answer");
+  showAns.innerHTML = myQuestions[currentSlide].correctAnswer;
+}
+
+// getElement
+const goQuizPageButton = document.getElementById("quiz-page");
+const startButton = document.getElementById("start-page");
+const resultPage = document.getElementById("result");
+const goBackToStartPage = document.querySelectorAll(".goback");
+const previousButton = document.getElementById("previous");
+const nextButton = document.getElementById("next");
+//const slides = document.querySelectorAll(".slide");
+//const submitButton = document.getElementById("submit");
+
+//showSlide(currentSlide);
+// function showNextSlideAndCountdown() {
+//   showNextSlide();
+//   countdown();
+// }
+// All Eventlisteners here
+//goQuizPageButton.addEventListener("click", showQuizPage);
+startButton.addEventListener("click", countdown);
+resultPage.addEventListener("click", showResultPage);
+previousButton.addEventListener("click", showPreviousSlide);
+nextButton.addEventListener("click", showNextSlide);
+
+goBackToStartPage.forEach(element => {
+  element.addEventListener("click", goBackToStart);
+});
+//submitButton.addEventListener("click", showAnswer);
