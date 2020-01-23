@@ -1,13 +1,26 @@
 * {
   font-family: "Bradley Hand", cursive;
+  flex-direction: row;
 }
 
 /* Bradley Hand, cursive */
 /* "Blippo", fantasy */
 
 /* introduction */
+
+#start-page {
+  flex-direction: row;
+}
+
 ol {
   list-style: none;
+
+  padding: 0px;
+}
+
+li {
+  margin: 5px 0px;
+  font-size: 20px;
 }
 
 #start-page h1 {
@@ -19,12 +32,14 @@ ol {
 #start-page h3 {
   margin: 0px;
   color: rgb(223, 110, 110);
+  font-weight: 800;
 }
 
 #start-page h5 {
   margin: 10px 0px;
   color: rgb(223, 110, 110);
 }
+
 #start-page ol {
   font-size: 15px;
 }
@@ -47,7 +62,7 @@ ol {
 }
 
 #start-page input:hover {
-  color: #fde400;
+  color: red;
 }
 
 #previous {
@@ -58,6 +73,7 @@ ol {
   font-weight: bold;
   font-size: 20px;
   text-shadow: 0px 4px 2px rgb(253, 181, 181);
+  margin: 20px 30px;
 }
 #previous:active {
   top: 4px;
@@ -76,6 +92,7 @@ ol {
   font-weight: bold;
   font-size: 20px;
   text-shadow: 0px 4px 2px rgb(253, 181, 181);
+  margin: 20px 30px;
 }
 #submit:active {
   top: 4px;
@@ -94,6 +111,7 @@ ol {
   font-weight: bold;
   font-size: 20px;
   text-shadow: 0px 4px 2px rgb(253, 181, 181);
+  margin: 20px 30px;
 }
 #next:active {
   top: 4px;
@@ -112,6 +130,7 @@ ol {
   font-weight: bold;
   font-size: 20px;
   text-shadow: 0px 4px 2px rgb(253, 181, 181);
+  margin: 0px 40px;
 }
 #goback:active {
   top: 4px;
@@ -130,6 +149,7 @@ ol {
   font-weight: bold;
   font-size: 20px;
   text-shadow: 0px 4px 2px rgb(253, 181, 181);
+  margin: 0px 40px;
 }
 #result:active {
   top: 4px;
@@ -181,25 +201,6 @@ body {
   font-size: 30px;
   color: rgb(255, 121, 121);
 }
-/* .star1 {
-  font-size: 30px;
-  color: blue;
-}
-
-.star2 {
-  font-size: 30px;
-  color: blue;
-}
-
-.star3 {
-  font-size: 30px;
-  color: blue;
-}
-
-.star4 {
-  font-size: 30px;
-  color: blue;
-} */
 
 #timer {
   margin: 0 50px;
@@ -231,7 +232,7 @@ img {
 }
 
 #quiz-image {
-  filter: blur(20px);
+  filter: blur(10px);
 }
 
 .quisPageImg {
@@ -239,6 +240,9 @@ img {
   height: 80px;
 }
 /* for the quiz */
+#quiz-title {
+  font-size: 30px;
+}
 .choiceContainer {
   display: flex;
   flex-direction: row;
@@ -250,6 +254,7 @@ img {
   flex-direction: column;
   justify-content: center;
   margin: 20px 0px;
+  font-size: 25px;
 }
 
 #first-answer {
@@ -262,6 +267,12 @@ img {
 
 #third-answer {
   margin: 0px 10px;
+}
+
+.answerContainer {
+  margin: 20px 0px 0px 0px;
+  font-size: 40px;
+  color: #fd0000;
 }
 
 /* result */
@@ -278,8 +289,8 @@ img {
   margin: 10px;
 }
 
-.resultContainer {
-  font-size: 50px;
+#resultContainer {
+  font-size: 80px;
 }
 
 /* footer */

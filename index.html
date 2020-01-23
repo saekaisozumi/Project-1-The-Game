@@ -11,19 +11,26 @@
   <body>
     <!-- introduction page -->
     <div id="start-page">
-      <h1>Where is this in the world?</h1>
+      <h1>The world is YOURS</h1>
       <img class="startimg" src="pictures/earth.gif" alt="" />
 
       <h3>INTRODUCTION</h3>
-      <h5>✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎</h5>
-      <ol>
+      <h5>✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎ ✈︎　✈︎　✈︎　✈︎　✈︎</h5>
+      <ol class="ol">
         <li>1. You have 10 questions</li>
-        <li>2. For each question, you have 10 sec</li>
-        <li>3. Click "SUBMIT" after you chose an answer</li>
-        <li></li>
-        <li><span>ENJOY YOUR TRIP!!</span></li>
+        <li>2. For each question, you have 10/s</li>
+        <li>
+          3. After 10 sec, current quiz goes to <br />
+          next quiz automatically
+        </li>
+        <li>
+          4. Make sure to click <span>"SUBMIT" </span>after you chose <br />
+          an answer(then count stopps)
+        </li>
+        <li>5. Click "Result" to see your result</li>
+        <li>ENJOY YOUR TRIP!!</li>
       </ol>
-      <h5>✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎</h5>
+      <h5>✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎ ✈︎　✈︎　✈︎　✈︎　✈︎</h5>
       <input type="button" value="START" onclick="showQuizPage()" />
       <!-- <button id="startgame">START</button> -->
     </div>
@@ -36,7 +43,7 @@
             <div id="timer"></div>
             <div class="stars">✈︎ ✈︎ ✈︎ ✈︎</div>
           </div>
-          <h1 class="title">Where is this in the world?</h1>
+          <h1 class="title">The world is YOURS</h1>
         </div>
       </div>
       <!-- header END -->
@@ -46,11 +53,29 @@
 
       <div id="quiz-answer" class="quiz-answer">
         <div class="choiceContainer">
-          <input type="radio" name="answers" value="berlin" />
+          <input
+            id="answer1"
+            class="reply"
+            type="radio"
+            name="answers"
+            value="berlin"
+          />
           <div id="first-answer">Berin</div>
-          <input type="radio" name="answers" value="london" />
+          <input
+            id="answer2"
+            class="reply"
+            type="radio"
+            name="answers"
+            value="london"
+          />
           <div id="second-answer">Paris</div>
-          <input type="radio" name="answers" value="paris" />
+          <input
+            id="answer3"
+            class="reply"
+            type="radio"
+            name="answers"
+            value="paris"
+          />
           <div id="third-answer">Koln</div>
         </div>
         <div class="answerContainer">
@@ -66,24 +91,25 @@
       <input type="radio" name="answers" value="paris" />
       <label for="paris">London</label>
     </div> -->
-
-      <button id="previous">PREVIOUS</button>
-      <button id="submit">submit</button>
-      <button id="next">Next</button>
-
-      <button id="goback" class="goback">Back to start</button>
-      <button id="result">RESULT</button>
-      <!-- <img class="quisPageImg" src="pictures/city.gif" alt="" /> -->
+      <div class="buttoncontainer1">
+        <button id="previous">PREVIOUS</button>
+        <button id="submit">SUBMIT</button>
+        <button id="next">NEXT</button>
+      </div>
+      <div class="buttoncontainer2">
+        <button id="goback" class="goback">BACK to START</button>
+        <button id="result">RESULT</button>
+        <!-- <img class="quisPageImg" src="pictures/city.gif" alt="" /> -->
+      </div>
     </div>
-
     <!-- show result -->
     <div id="result-page">
       <h2>RESULT</h2>
-      <h5>✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎</h5>
+      <h5>✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎</h5>
       <img class="endimg" src="pictures/earth2.gif" alt="" />
       <div id="resultContainer"></div>
       <button id="goback" class="goback">Back to start</button>
-      <h5>✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎</h5>
+      <h5>✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎　✈︎</h5>
     </div>
     <!-- question part ends -->
     <footer>

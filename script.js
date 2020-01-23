@@ -1,30 +1,30 @@
 let currentSlide = -1;
-
+let points = 0;
 const myQuestions = [
   {
-    question: "Where is this(city)?",
+    question: "Where is this? 1/10",
     picture: "pictures/Berlin,Germany.jpg",
     answers: {
       a: "Berlin",
-      b: "Paris",
+      b: "Bruxelles",
       c: "London"
     },
     correctAnswer: "Berlin"
   },
 
   {
-    question: "Where is this(city)?",
+    question: "Where is this? 2/10",
     picture: "pictures/Paris,France.jpeg",
     answers: {
-      a: "Berlin  nnnnn",
+      a: "Oslo",
       b: "Paris",
-      c: "London"
+      c: "Budapest"
     },
     correctAnswer: "Paris"
   },
 
   {
-    question: "Where is this(city)?",
+    question: "Where is this? 3/10",
     picture: "pictures/Köln, Germany.jpg",
     answers: {
       a: "Köln",
@@ -35,10 +35,10 @@ const myQuestions = [
   },
 
   {
-    question: "Where is this(city)?",
+    question: "Where is this? 4/10",
     picture: "pictures/Kuala Lumpur, Malaysia.jpeg",
     answers: {
-      a: "Tokyo",
+      a: "Macao",
       b: "Taipei",
       c: "Kuala Lumpur"
     },
@@ -46,7 +46,7 @@ const myQuestions = [
   },
 
   {
-    question: "Where is this(city)?",
+    question: "Where is this? 5/10",
     picture: "pictures/oslo, Norway.jpg",
     answers: {
       a: "Copenhagen",
@@ -57,58 +57,58 @@ const myQuestions = [
   },
 
   {
-    question: "Where is this(city)?",
+    question: "Where is this? 6/10",
     picture: "pictures/rome, italy.jpg",
     answers: {
-      a: "Köln",
-      b: "Paris",
-      c: "Humburg0000000"
+      a: "Lisbon",
+      b: "Madrid",
+      c: "Rome"
     },
-    correctAnswer: "a: Köln"
+    correctAnswer: "Rome"
   },
 
   {
-    question: "Where is this(city)?",
+    question: "Where is this? 7/10",
     picture: "pictures/Seoul, South Korea.jpg",
     answers: {
-      a: "Köln",
-      b: "Paris",
-      c: "Humburg0000000"
+      a: "New Delhi",
+      b: "Ho Chi Minh",
+      c: "Seoul"
     },
-    correctAnswer: "a: Köln"
+    correctAnswer: "Seoul"
   },
 
   {
-    question: "Where is this(city)?",
+    question: "Where is this? 8/10",
     picture: "pictures/Singapore.jpeg",
     answers: {
-      a: "Köln",
-      b: "Paris",
-      c: "Humburg0000000"
+      a: "Singapore",
+      b: "Bangkok",
+      c: "Manila"
     },
-    correctAnswer: "a: Köln"
+    correctAnswer: "Singapore"
   },
 
   {
-    question: "Where is this(city)?",
+    question: "Where is this? 9/10",
     picture: "pictures/Taipei,Taiwan.jpg",
     answers: {
-      a: "Köln",
-      b: "Paris",
-      c: "Humburg0000000"
+      a: "Istanbul",
+      b: "Taipei",
+      c: "Mumbai"
     },
-    correctAnswer: "a: Köln"
+    correctAnswer: "Taipei"
   },
 
   {
-    question: "Where is this(city)?",
+    question: "Where is this? 10/10",
     picture: "pictures/Tokyo, Japan.jpeg",
     answers: {
-      a: "Köln",
-      b: "Paris",
-      c: "Humburg0000000"
+      a: "Tokyo",
+      b: "Osaka",
+      c: "Sapporo"
     },
-    correctAnswer: "a: Köln"
+    correctAnswer: "Tokyo"
   }
 ];
 
@@ -196,10 +196,11 @@ function goBackToStart() {
   const quizPage = document.getElementById("quiz-page");
   const startPage = document.getElementById("start-page");
   const resultPage = document.getElementById("result-page");
-
+  let resultContainer = document.getElementById("resultContainer");
   quizPage.style.display = "none";
   startPage.style.display = "block";
   resultPage.style.display = "none";
+  resultContainer.innerHTML = "";
 }
 
 //switch questions function
@@ -221,11 +222,11 @@ function showSlide(curSlide) {
 }
 
 //make random number
-let num;
+/* let num;
 function getRandomNum(num) {
   return Math.floor(Math.random() * Math.floor(num));
 }
-console.log(getRandomNum(100));
+console.log(getRandomNum(100)); */
 
 //go to next question function
 function showNextSlide() {
@@ -234,9 +235,9 @@ function showNextSlide() {
   let firstAnswer = document.getElementById("first-answer");
   let secondAnswer = document.getElementById("second-answer");
   let thirdAnswer = document.getElementById("third-answer");
-  firstAnswer.style.color = "black";
-  secondAnswer.style.color = "black";
-  thirdAnswer.style.color = "black";
+  firstAnswer.style.color = "rgb(92, 83, 83)";
+  secondAnswer.style.color = "rgb(92, 83, 83)";
+  thirdAnswer.style.color = "rgb(92, 83, 83)";
   const showAns = document.getElementById("answer");
   showAns.innerHTML = "";
   if (currentSlide + 1 < myQuestions.length) {
@@ -255,9 +256,9 @@ function showPreviousSlide() {
   let firstAnswer = document.getElementById("first-answer");
   let secondAnswer = document.getElementById("second-answer");
   let thirdAnswer = document.getElementById("third-answer");
-  firstAnswer.style.color = "black";
-  secondAnswer.style.color = "black";
-  thirdAnswer.style.color = "black";
+  firstAnswer.style.color = "rgb(92, 83, 83)";
+  secondAnswer.style.color = "rgb(92, 83, 83)";
+  thirdAnswer.style.color = "rgb(92, 83, 83)";
   const showAns = document.getElementById("answer");
   showAns.innerHTML = "";
   if (currentSlide > 0) {
@@ -279,8 +280,10 @@ let thirdAnswer = document.getElementById("third-answer");
 
 function showAnswer() {
   clearInterval(id);
+  let resultContainer = document.getElementById("resultContainer");
 
   let showAns = document.getElementById("answer");
+  //console.log(showAns.innerText);
   let resetImage = document.getElementById("quiz-image");
 
   if (firstAnswer.textContent == myQuestions[currentSlide].correctAnswer) {
@@ -294,13 +297,31 @@ function showAnswer() {
   ) {
     thirdAnswer.style.color = "red";
   }
+
+  //console.log(document.querySelectorAll(".reply"));
   showAns.innerHTML = myQuestions[currentSlide].correctAnswer;
+  document.querySelectorAll(".reply").forEach(elem => {
+    if (elem.checked) {
+      if (
+        elem.nextElementSibling.innerText.toLowerCase() ===
+        showAns.innerHTML.toLowerCase()
+      ) {
+        //console.log("eureka");
+        points += 1;
+      } else {
+        /*  console.log(elem.nextElementSibling.innerText.toLowerCase());
+        console.log(showAns.innerHTML.toLowerCase()); */
+        //console.log("sorry you are a　loser");
+      }
+    }
+  });
+  console.log(points);
+  resultContainer.innerHTML = points + "/10";
   document.querySelector("#quiz-image").style.filter = "blur(0)";
-  //myQuestions[currentSlide].picture.style.filter = "blur(0%)";
 }
 
 //count result
-function countResult() {
+/* function countResult() {
   let resultContainer = document.getElementById("resultContainer");
   let resultArray = 0;
   if (
@@ -312,7 +333,7 @@ function countResult() {
   //for (i = 0; i <= 3; 1++)
 
   resultContainer.innerHTML = resultArray.toString;
-}
+} */
 
 /* function countResult() {
   let resultContainer = document.getElementById("resultContainer");
