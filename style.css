@@ -1,3 +1,10 @@
+* {
+  font-family: "Bradley Hand", cursive;
+}
+
+/* Bradley Hand, cursive */
+/* "Blippo", fantasy */
+
 /* introduction */
 ol {
   list-style: none;
@@ -5,23 +12,138 @@ ol {
 
 #start-page h1 {
   margin: 50px 0px 0px 0px;
+  font-size: 50px;
+  color: rgb(255, 124, 124);
+  text-shadow: 0px 4px 2px rgb(71, 41, 32);
 }
 #start-page h3 {
   margin: 0px;
+  color: rgb(223, 110, 110);
 }
 
 #start-page h5 {
   margin: 10px 0px;
+  color: rgb(223, 110, 110);
 }
 #start-page ol {
   font-size: 15px;
 }
 
+/* buttons */
+#start-page input {
+  background-color: #f8f6f0;
+  color: rgba(238, 113, 113, 0.747);
+  border: none;
+
+  font-size: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 25px;
+  text-shadow: 0px 4px 2px rgb(253, 181, 181);
+}
+#start-page input:active {
+  top: 4px;
+  text-shadow: none;
+}
+
+#start-page input:hover {
+  color: #fde400;
+}
+
+#previous {
+  background-color: #f8f6f0;
+  color: rgba(238, 113, 113, 0.747);
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 0px 4px 2px rgb(253, 181, 181);
+}
+#previous:active {
+  top: 4px;
+  text-shadow: none;
+}
+
+#previous:hover {
+  color: #fd0000;
+}
+
+#submit {
+  background-color: #f8f6f0;
+  color: rgba(238, 113, 113, 0.747);
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 0px 4px 2px rgb(253, 181, 181);
+}
+#submit:active {
+  top: 4px;
+  text-shadow: none;
+}
+
+#submit:hover {
+  color: #fd0000;
+}
+
+#next {
+  background-color: #f8f6f0;
+  color: rgba(238, 113, 113, 0.747);
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 0px 4px 2px rgb(253, 181, 181);
+}
+#next:active {
+  top: 4px;
+  text-shadow: none;
+}
+
+#next:hover {
+  color: #fd0000;
+}
+
+#goback {
+  background-color: #f8f6f0;
+  color: rgba(238, 113, 113, 0.747);
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 0px 4px 2px rgb(253, 181, 181);
+}
+#goback:active {
+  top: 4px;
+  text-shadow: none;
+}
+
+#goback:hover {
+  color: #fd0000;
+}
+
+#result {
+  background-color: #f8f6f0;
+  color: rgba(238, 113, 113, 0.747);
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 0px 4px 2px rgb(253, 181, 181);
+}
+#result:active {
+  top: 4px;
+  text-shadow: none;
+}
+
+#result:hover {
+  color: #fd0000;
+}
+
 /* this is all for header */
 body {
   font-size: 20px;
-  font-family: "Work Sans", sans-serif;
-  color: #333;
+  color: rgb(92, 83, 83);
   font-weight: 300;
   text-align: center;
   background-color: #f8f6f0;
@@ -45,6 +167,8 @@ body {
   font-size: 40px;
   margin: 0 50px;
   text-align: right;
+  color: rgb(255, 124, 124);
+  text-shadow: 0px 4px 2px rgb(71, 41, 32);
 }
 
 .stars {
@@ -54,8 +178,10 @@ body {
   justify-content: space-around;
   align-items: center;
   align-content: stretch;
+  font-size: 30px;
+  color: rgb(255, 121, 121);
 }
-.star1 {
+/* .star1 {
   font-size: 30px;
   color: blue;
 }
@@ -73,7 +199,7 @@ body {
 .star4 {
   font-size: 30px;
   color: blue;
-}
+} */
 
 #timer {
   margin: 0 50px;
@@ -89,6 +215,14 @@ body {
 
 .startimg {
   filter: blur(0px);
+  height: 400px;
+  width: 400px;
+}
+
+.endimg {
+  filter: blur(0px);
+  height: 400px;
+  width: 400px;
 }
 img {
   height: 400px;
@@ -97,12 +231,23 @@ img {
 }
 
 #quiz-image {
-  filter: blur(8px);
+  filter: blur(20px);
+}
+
+.quisPageImg {
+  width: 800px;
+  height: 80px;
 }
 /* for the quiz */
-#quiz-answer {
+.choiceContainer {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+}
+
+.quiz-answer {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   margin: 20px 0px;
 }
@@ -117,4 +262,32 @@ img {
 
 #third-answer {
   margin: 0px 10px;
+}
+
+/* result */
+#result-page h2 {
+  font-size: 50px;
+  color: rgb(255, 124, 124);
+  text-shadow: 0px 4px 2px rgb(71, 41, 32);
+  margin: 20px 0px 0px 0px;
+}
+
+#result-page h5 {
+  font-size: 20px;
+  color: rgb(255, 124, 124);
+  margin: 10px;
+}
+
+.resultContainer {
+  font-size: 50px;
+}
+
+/* footer */
+audio {
+  height: 20px;
+  margin-top: 30px;
+}
+
+footer p {
+  font-size: 10px;
 }

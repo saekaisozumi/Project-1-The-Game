@@ -1,4 +1,4 @@
-let currentSlide = 0;
+let currentSlide = -1;
 
 const myQuestions = [
   {
@@ -16,11 +16,11 @@ const myQuestions = [
     question: "Where is this(city)?",
     picture: "pictures/Paris,France.jpeg",
     answers: {
-      a: "Berlin",
+      a: "Berlin  nnnnn",
       b: "Paris",
       c: "London"
     },
-    correctAnswer: "b: Paris"
+    correctAnswer: "Paris"
   },
 
   {
@@ -28,39 +28,114 @@ const myQuestions = [
     picture: "pictures/Köln, Germany.jpg",
     answers: {
       a: "Köln",
-      b: "Paris",
+      b: "Frankfurt",
       c: "Humburg"
+    },
+    correctAnswer: "Köln"
+  },
+
+  {
+    question: "Where is this(city)?",
+    picture: "pictures/Kuala Lumpur, Malaysia.jpeg",
+    answers: {
+      a: "Tokyo",
+      b: "Taipei",
+      c: "Kuala Lumpur"
+    },
+    correctAnswer: "Kuala Lumpur"
+  },
+
+  {
+    question: "Where is this(city)?",
+    picture: "pictures/oslo, Norway.jpg",
+    answers: {
+      a: "Copenhagen",
+      b: "Oslo",
+      c: "Helsinki"
+    },
+    correctAnswer: "Oslo"
+  },
+
+  {
+    question: "Where is this(city)?",
+    picture: "pictures/rome, italy.jpg",
+    answers: {
+      a: "Köln",
+      b: "Paris",
+      c: "Humburg0000000"
+    },
+    correctAnswer: "a: Köln"
+  },
+
+  {
+    question: "Where is this(city)?",
+    picture: "pictures/Seoul, South Korea.jpg",
+    answers: {
+      a: "Köln",
+      b: "Paris",
+      c: "Humburg0000000"
+    },
+    correctAnswer: "a: Köln"
+  },
+
+  {
+    question: "Where is this(city)?",
+    picture: "pictures/Singapore.jpeg",
+    answers: {
+      a: "Köln",
+      b: "Paris",
+      c: "Humburg0000000"
+    },
+    correctAnswer: "a: Köln"
+  },
+
+  {
+    question: "Where is this(city)?",
+    picture: "pictures/Taipei,Taiwan.jpg",
+    answers: {
+      a: "Köln",
+      b: "Paris",
+      c: "Humburg0000000"
+    },
+    correctAnswer: "a: Köln"
+  },
+
+  {
+    question: "Where is this(city)?",
+    picture: "pictures/Tokyo, Japan.jpeg",
+    answers: {
+      a: "Köln",
+      b: "Paris",
+      c: "Humburg0000000"
     },
     correctAnswer: "a: Köln"
   }
 ];
 
 //countdown timer
-var countdown = function() {
-  var count = 20;
+//var countdown =
+let id;
 
+function countdown() {
+  let count = 10;
+  document.querySelector("#quiz-image").style.filter = `blur(${count}px)`;
   document.getElementById("timer").textContent = count.toString();
   // console.log(count--);
-  var id = setInterval(function() {
+  id = setInterval(function() {
     document.getElementById("timer").textContent = count.toString();
-    let blurVal = count / 2;
+    let blurVal = count * 0.7;
     // console.log(blurVal);
     document.querySelector("#quiz-image").style.filter = `blur(${blurVal}px)`;
     // countdown();
     // console.log(count);
-    if (count <= 0) {
-      clearInterval(id); //idをclearIntervalで指定しているd
+    if (count < 0) {
+      count = 10;
+
+      clearInterval(id); //idをclearIntervalで指定している
+      showNextSlide();
     }
     count--;
   }, 1000);
-};
-
-// countdown();
-
-//blur picture function -> haven't fixed yet
-function imageBlur() {
-  const blurNum = 40;
-  for (var i = 0; i <= 20; i++) {}
 }
 
 //Go to quiz page from start page
@@ -78,6 +153,18 @@ function showQuizPage() {
   } else {
     quizPage.style.display = "block";
     startPage.style.display = "none";
+  }
+}
+
+//
+function finishQuiz() {
+  const quizPage = document.getElementById("quiz-page");
+  const startPage = document.getElementById("start-page");
+  const resultPage = document.getElementById("result-page");
+  if (myQuestions[currentSlide] <= 4) {
+    quizPage.style.display = "none";
+    startPage.style.display = "none";
+    resultPage.style.display = "block";
   }
 }
 
@@ -133,8 +220,23 @@ function showSlide(curSlide) {
   thirdAnswer.innerHTML = curSlide.answers.c;
 }
 
+//make random number
+let num;
+function getRandomNum(num) {
+  return Math.floor(Math.random() * Math.floor(num));
+}
+console.log(getRandomNum(100));
+
 //go to next question function
 function showNextSlide() {
+  clearInterval(id);
+  countdown();
+  let firstAnswer = document.getElementById("first-answer");
+  let secondAnswer = document.getElementById("second-answer");
+  let thirdAnswer = document.getElementById("third-answer");
+  firstAnswer.style.color = "black";
+  secondAnswer.style.color = "black";
+  thirdAnswer.style.color = "black";
   const showAns = document.getElementById("answer");
   showAns.innerHTML = "";
   if (currentSlide + 1 < myQuestions.length) {
@@ -148,25 +250,85 @@ function showNextSlide() {
 
 //go back to previous question
 function showPreviousSlide() {
+  clearInterval(id);
+  countdown();
+  let firstAnswer = document.getElementById("first-answer");
+  let secondAnswer = document.getElementById("second-answer");
+  let thirdAnswer = document.getElementById("third-answer");
+  firstAnswer.style.color = "black";
+  secondAnswer.style.color = "black";
+  thirdAnswer.style.color = "black";
   const showAns = document.getElementById("answer");
   showAns.innerHTML = "";
   if (currentSlide > 0) {
     currentSlide -= 1;
     showSlide(myQuestions[currentSlide]);
+    //countdown();
   } else {
     return;
   }
 }
 
-//show answer after push submit button 木曜日！！！！！！！！！！！！
+//show answer after push submit button
 const submitButton = document.getElementById("submit");
 submitButton.addEventListener("click", showAnswer);
 
+let firstAnswer = document.getElementById("first-answer");
+let secondAnswer = document.getElementById("second-answer");
+let thirdAnswer = document.getElementById("third-answer");
+
 function showAnswer() {
-  const showAns = document.getElementById("answer");
+  clearInterval(id);
+
+  let showAns = document.getElementById("answer");
+  let resetImage = document.getElementById("quiz-image");
+
+  if (firstAnswer.textContent == myQuestions[currentSlide].correctAnswer) {
+    firstAnswer.style.color = "red";
+  } else if (
+    secondAnswer.textContent == myQuestions[currentSlide].correctAnswer
+  ) {
+    secondAnswer.style.color = "red";
+  } else if (
+    thirdAnswer.textContent == myQuestions[currentSlide].correctAnswer
+  ) {
+    thirdAnswer.style.color = "red";
+  }
   showAns.innerHTML = myQuestions[currentSlide].correctAnswer;
+  document.querySelector("#quiz-image").style.filter = "blur(0)";
+  //myQuestions[currentSlide].picture.style.filter = "blur(0%)";
 }
 
+//count result
+function countResult() {
+  let resultContainer = document.getElementById("resultContainer");
+  let resultArray = 0;
+  if (
+    myQuestions[currentSlide].answers.checked ==
+    myQuestions[currentSlide].correctAnswer
+  ) {
+    resultArray++;
+  }
+  //for (i = 0; i <= 3; 1++)
+
+  resultContainer.innerHTML = resultArray.toString;
+}
+
+/* function countResult() {
+  let resultContainer = document.getElementById("resultContainer");
+  let resultArray = 0;
+  let trueAnswer = newArr(
+    myQuestions[0].answers.a,
+    myQuestions[1].answers.b,
+    myQuestions[2].answers.a
+  );
+  for (i = 0; i <= 3; 1++)
+    if (myQuestions[trueAnswer[i]].checked) {
+      resultArray++;
+    }
+  resultContainer.innerHTML = resultArray.toString;
+}
+ */
 // getElement
 const goQuizPageButton = document.getElementById("quiz-page");
 const startButton = document.getElementById("start-page");
@@ -184,7 +346,10 @@ const nextButton = document.getElementById("next");
 // }
 // All Eventlisteners here
 //goQuizPageButton.addEventListener("click", showQuizPage);
-startButton.addEventListener("click", countdown);
+startButton.addEventListener("click", () => {
+  countdown();
+  showNextSlide();
+});
 resultPage.addEventListener("click", showResultPage);
 previousButton.addEventListener("click", showPreviousSlide);
 nextButton.addEventListener("click", showNextSlide);
