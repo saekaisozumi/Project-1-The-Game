@@ -16,22 +16,22 @@ const myQuestions = [
     question: "Where is this? 2/10",
     picture: "pictures/Koln, Germany.jpg",
     answers: {
-      a: "Köln",
+      a: "Humburg",
       b: "Frankfurt",
-      c: "Humburg"
+      c: "Köln"
     },
     correctAnswer: "Köln"
   },
 
   {
     question: "Where is this? 3/10",
-    picture: "pictures/Paris,France.jpeg",
+    picture: "pictures/Rio de Janeiro, Brazil.jpg",
     answers: {
-      a: "Oslo",
-      b: "Paris",
-      c: "Budapest"
+      a: "New York",
+      b: "Rio de Janeiro",
+      c: "Cancún"
     },
-    correctAnswer: "Paris"
+    correctAnswer: "Rio de Janeiro"
   },
 
   {
@@ -47,35 +47,35 @@ const myQuestions = [
 
   {
     question: "Where is this? 5/10",
-    picture: "pictures/oslo, Norway.jpg",
+    picture: "pictures/Helsinki.jpg",
     answers: {
       a: "Copenhagen",
-      b: "Oslo",
-      c: "Helsinki"
+      b: "Helsinki",
+      c: "Oslo"
     },
-    correctAnswer: "Oslo"
+    correctAnswer: "Helsinki"
   },
 
   {
     question: "Where is this? 6/10",
-    picture: "pictures/rome, italy.jpg",
+    picture: "pictures/NY.jpg",
     answers: {
-      a: "Lisbon",
-      b: "Madrid",
-      c: "Rome"
+      a: "Tokyo",
+      b: "Dubai",
+      c: "New York"
     },
-    correctAnswer: "Rome"
+    correctAnswer: "New York"
   },
 
   {
     question: "Where is this? 7/10",
-    picture: "pictures/Seoul, South Korea.jpg",
+    picture: "pictures/Barcelona, Spain.jpg",
     answers: {
-      a: "New Delhi",
-      b: "Ho Chi Minh",
-      c: "Seoul"
+      a: "Lisbon",
+      b: "Barcelona",
+      c: "Casablanca"
     },
-    correctAnswer: "Seoul"
+    correctAnswer: "Barcelona"
   },
 
   {
@@ -91,24 +91,24 @@ const myQuestions = [
 
   {
     question: "Where is this? 9/10",
-    picture: "pictures/Taipei,Taiwan.jpg",
+    picture: "pictures/Cairo.jpeg",
     answers: {
       a: "Istanbul",
-      b: "Taipei",
+      b: "Cairo",
       c: "Mumbai"
     },
-    correctAnswer: "Taipei"
+    correctAnswer: "Cairo"
   },
 
   {
     question: "Where is this? 10/10",
-    picture: "pictures/Tokyo, Japan.jpeg",
+    picture: "pictures/Sydney,AUS.jpeg",
     answers: {
-      a: "Tokyo",
-      b: "Osaka",
-      c: "Sapporo"
+      a: "Sydney",
+      b: "Honolulu",
+      c: "Manila"
     },
-    correctAnswer: "Tokyo"
+    correctAnswer: "Sydney"
   }
 ];
 
@@ -157,7 +157,7 @@ function showQuizPage() {
 }
 
 //
-function finishQuiz() {
+/* function finishQuiz() {
   const quizPage = document.getElementById("quiz-page");
   const startPage = document.getElementById("start-page");
   const resultPage = document.getElementById("result-page");
@@ -167,7 +167,7 @@ function finishQuiz() {
     resultPage.style.display = "block";
   }
 }
-
+ */
 //Go to result page from quiz page
 function showResultPage() {
   const quizPage = document.getElementById("quiz-page");
@@ -192,7 +192,6 @@ function goBackToStart() {
 
 //go back to start page
 function goBackToStart() {
-  console.log("HELOOOOOOO");
   const quizPage = document.getElementById("quiz-page");
   const startPage = document.getElementById("start-page");
   const resultPage = document.getElementById("result-page");
@@ -244,6 +243,8 @@ function showNextSlide() {
     currentSlide += 1;
     //console.log(currentSlide, myQuestions.length);
     showSlide(myQuestions[currentSlide]);
+  } else if (currentSlide < myQuestions.length) {
+    showResultPage();
   } else {
     return;
   }
