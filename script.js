@@ -14,6 +14,17 @@ const myQuestions = [
 
   {
     question: "Where is this? 2/10",
+    picture: "pictures/Koln, Germany.jpg",
+    answers: {
+      a: "Köln",
+      b: "Frankfurt",
+      c: "Humburg"
+    },
+    correctAnswer: "Köln"
+  },
+
+  {
+    question: "Where is this? 3/10",
     picture: "pictures/Paris,France.jpeg",
     answers: {
       a: "Oslo",
@@ -21,17 +32,6 @@ const myQuestions = [
       c: "Budapest"
     },
     correctAnswer: "Paris"
-  },
-
-  {
-    question: "Where is this? 3/10",
-    picture: "pictures/Köln, Germany.jpg",
-    answers: {
-      a: "Köln",
-      b: "Frankfurt",
-      c: "Humburg"
-    },
-    correctAnswer: "Köln"
   },
 
   {
